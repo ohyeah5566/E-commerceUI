@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="bottom_icon_height">35.09dp</dimen>
+    <dimen name="bottom_icon_width">41.14dp</dimen>
+</resources>

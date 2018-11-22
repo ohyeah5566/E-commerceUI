@@ -6,13 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/parent_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_icon_width"
+                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/ic_show" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="蝦拚" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parent_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_icon_width"
+                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/ic_service" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="動態" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parent_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_icon_width"
+                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/ic_bottom_share" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="商城" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parent_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_icon_width"
+                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/ic_news" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="通知" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parent_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_icon_width"
+                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/ic_me" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="我的" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
