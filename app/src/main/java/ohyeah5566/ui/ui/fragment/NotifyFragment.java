@@ -27,7 +27,7 @@ public class NotifyFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_notify, container);
+        View rootView = inflater.inflate(R.layout.fragment_notify, container,false);
         ButterKnife.bind(this, rootView);
         return rootView;
     }
