@@ -2,12 +2,14 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="404px"
-    android:layout_height="630px">
+    android:layout_height="wrap_content"
+    android:padding="6dp">
+
 
     <ImageView
         android:id="@+id/imgv_category_commodity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260px"
+        android:layout_height="260px"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -16,6 +18,7 @@
         android:id="@+id/tv_category_commodityName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="Name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgv_category_commodity" />
@@ -24,18 +27,24 @@
         android:id="@+id/tv_category_commodity_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Price1"
+        android:textColor="@color/colorSpecPrice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_category_commodity_priceOrigin" />
+        app:layout_constraintRight_toLeftOf="@+id/tv_category_commodity_priceOrigin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_commodityName" />
 
     <TextView
         android:id="@+id/tv_category_commodity_priceOrigin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Price2"
+        android:layout_centerVertical="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/tv_category_commodity_price"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_commodityName" />
 
 
 </android.support.constraint.ConstraintLayout>

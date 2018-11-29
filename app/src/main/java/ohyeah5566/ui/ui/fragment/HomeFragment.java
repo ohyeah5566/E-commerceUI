@@ -70,10 +70,14 @@ public class HomeFragment extends Fragment {
 
     private void iniHeader() {
         List<HotsaleItem> mList = new ArrayList<>();
-        mList.add(new HotsaleItem(R.drawable.hotitem_1, "【天然健康膳\n食狗粮，提升...", 39.9+"", 9+""));
-        mList.add(new HotsaleItem(R.drawable.hotitem_2, "【适合搭配\n各类猫砂使用...", 29+"", 62+""));
-        mList.add(new HotsaleItem(R.drawable.hotitem_3, "【温和配方,\n消炎止痒，抗...", 25+"", 40+""));
-        mList.add(new HotsaleItem(R.drawable.hotitem_4, "【精致牛肉肉\n粒，美味有营...", 9.9+"", 35+""));
+        mList.add(new HotsaleItem(R.drawable.hotitem_1, "Adidas 帽子", "$"+280, "$"+300));
+        mList.add(new HotsaleItem(R.drawable.hotitem_2, "Adidas 鞋子", "$"+2300, "$"+3000));
+        mList.add(new HotsaleItem(R.drawable.hotitem_3, "發熱衣", "$"+120, "$"+140));
+        mList.add(new HotsaleItem(R.drawable.hotitem_4, "木製櫃", "$"+3300, "$"+4500));
+        mList.add(new HotsaleItem(R.drawable.hotitem_5, "充電線", "$"+80, "$"+150));
+        mList.add(new HotsaleItem(R.drawable.hotitem_6, "鍋子", "$"+800, "$"+980));
+        mList.add(new HotsaleItem(R.drawable.hotitem_7, "洗衣精", "$"+230, "$"+250));
+        mList.add(new HotsaleItem(R.drawable.hotitem_8, "電熱毯", "$"+13000, "$"+14500));
 
         header = LayoutInflater.from(getContext()).inflate(R.layout.header_home,mRecycleView,false);
         RecyclerView Rview = header.findViewById(R.id.header_recycleview);

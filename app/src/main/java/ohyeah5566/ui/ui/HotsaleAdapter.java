@@ -1,6 +1,7 @@
 package ohyeah5566.ui.ui;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -38,10 +39,12 @@ public class HotsaleAdapter extends RecyclerView.Adapter<HotsaleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imgv_CategoryCommodity.setImageDrawable(ContextCompat.getDrawable(mContext,mList.get(position).imageID));
+        holder.imgv_CategoryCommodity.setImageDrawable(ContextCompat.getDrawable(mContext, mList.get(position).imageID));
         holder.tv_CategoryCommodityName.setText(mList.get(position).getCommodityName());
         holder.tv_CategoryCommodityPrice.setText(mList.get(position).getPrice());
         holder.tv_CategoryCommodityPriceOrigin.setText(mList.get(position).getPriceOrigin());
+        holder.tv_CategoryCommodityPriceOrigin.setPaintFlags(
+                holder.tv_CategoryCommodityPriceOrigin.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override
