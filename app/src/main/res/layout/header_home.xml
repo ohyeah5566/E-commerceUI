@@ -12,13 +12,43 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imgv_category"
+        android:layout_width="0dp"
+        android:layout_height="500px"
+        android:src="@drawable/category"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_banner"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:text="限時特賣  07 53 42"
+        app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_category" />
+
+    <TextView
+        android:id="@+id/tv_seeAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:text="查看全部 >"
+        app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_category" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/header_recycleview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_banner">
+        android:background="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/tv_seeAll">
 
     </android.support.v7.widget.RecyclerView>
 
