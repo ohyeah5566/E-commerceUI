@@ -1,10 +1,8 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview_commodity"
-    android:layout_width="wrap_content"
+    android:layout_width="500px"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    android:padding="6dp"
     app:cardBackgroundColor="#ffdddddd">
 
     <android.support.constraint.ConstraintLayout
@@ -13,8 +11,8 @@
 
         <ImageView
             android:id="@+id/imgv_itemcard_img"
-            android:layout_width="300px"
-            android:layout_height="300px"
+            android:layout_width="500px"
+            android:layout_height="500px"
             android:src="@drawable/commodity_1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -25,6 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="金牌干溜 1984酸辣粉 257g"
+            app:layout_constraintLeft_toLeftOf="@+id/imgv_itemcard_img"
+            app:layout_constraintRight_toRightOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/imgv_itemcard_img" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$120"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$95"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
     </android.support.constraint.ConstraintLayout>
 

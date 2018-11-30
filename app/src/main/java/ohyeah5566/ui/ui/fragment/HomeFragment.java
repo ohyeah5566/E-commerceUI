@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
 
     private List<Product> productList= new ArrayList<>();
     View header ;
+    View footer;
     Banner banner;
 
     @Override
@@ -45,11 +46,11 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, rootView);
 
         productList.add(new Product(R.drawable.commodity_1,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_2,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_3,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_4,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_5,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_6,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_2,"【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_3,"當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_4,"3C買賣 SONY PlayStation SCPH-7501 遊戲主機","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_5,"[貓貓蟲-咖波] 經典造型 絨毛娃娃","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_6,"手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus","$120","$95"));
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList,getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
@@ -57,8 +58,10 @@ public class HomeFragment extends Fragment {
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         iniHeader();
+        addFooter();
         iniBanner();
         recycleviewAdapater.setHeaderView(header);
+        recycleviewAdapater.setFooterView(footer);
 
         return rootView;
     }
@@ -82,6 +85,9 @@ public class HomeFragment extends Fragment {
         Rview.setAdapter(new HotsaleAdapter(mList,getContext()));
         Rview.setNestedScrollingEnabled(false);
 
+    }
+    private void addFooter(){
+        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer,mRecycleView,false);
     }
 
     private void iniBanner() {

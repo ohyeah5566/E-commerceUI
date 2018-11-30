@@ -25,10 +25,12 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
     private List<Product> dataLists;
     private Context mContext;
     private View header;
+    private View loadmoreview;
     int TYPE_NORMAL = 0;
     int TYPE_HEADER = 1;
+    int TYPE_FOOTER = 2;
 
-    public RecycleviewAdapater(List<Product> data,Context mContext) {
+    public RecycleviewAdapater(List<Product> data, Context mContext) {
         dataLists = data;
         this.mContext = mContext;
     }
@@ -38,23 +40,30 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
         notifyItemInserted(0);
     }
 
-    public View getHeaderView() {
-        return header;
+    public void setFooterView(View footerView) {
+        loadmoreview = footerView;
+        notifyItemInserted(getItemCount() - 1);
     }
 
     @Override
     public int getItemViewType(int position) {
+        if (header == null && loadmoreview == null) {
+            return TYPE_NORMAL;
+        }
         if (position == 0) return TYPE_HEADER;
+        if (position == getItemCount() - 1) return TYPE_FOOTER;
         return TYPE_NORMAL;
     }
+
     //重写此方法，判断recyclerview的layoutmanager为StaggeredGridLayoutManager的时候，是header和footer独占一行，而不是一个item
     @Override
     public void onViewAttachedToWindow(ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
         ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
-        if (layoutParams!=null&&layoutParams instanceof StaggeredGridLayoutManager.LayoutParams){
+        if (layoutParams != null && layoutParams instanceof StaggeredGridLayoutManager.LayoutParams) {
             StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) layoutParams;
-            params.setFullSpan(getItemViewType(holder.getLayoutPosition())==TYPE_HEADER);
+            params.setFullSpan(getItemViewType(holder.getLayoutPosition()) == TYPE_HEADER
+                    || getItemViewType(holder.getLayoutPosition()) == TYPE_FOOTER);
         }
     }
 
@@ -62,7 +71,7 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (header != null && viewType == TYPE_HEADER) return new ViewHolder(header);
-
+        if (loadmoreview != null && viewType == TYPE_FOOTER) return new ViewHolder(loadmoreview);
         View view = View.inflate(parent.getContext(), R.layout.item_productcard, null);
         ViewHolder holder = new ViewHolder(view);
         return holder;
@@ -70,20 +79,21 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (getItemViewType(position) == TYPE_NORMAL){
-            holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext,dataLists.get(position-1).getImageID()));
-            holder.tv_ItemcardTitle.setText(dataLists.get(position-1).getName());
-            holder.tv_ItemcardPrice.setText(dataLists.get(position-1).getOriginPrice());
-            holder.tv_ItemcardSpecPrice.setText(dataLists.get(position-1).getSpecPrice());
-        }
-        else
+        if (getItemViewType(position) == TYPE_NORMAL) {
+            holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()));
+            holder.tv_ItemcardTitle.setText(dataLists.get(position - 1).getName());
+            holder.tv_ItemcardPrice.setText(dataLists.get(position - 1).getOriginPrice());
+            holder.tv_ItemcardSpecPrice.setText(dataLists.get(position - 1).getSpecPrice());
+        } else
             return;
     }
 
     @Override
     public int getItemCount() {
-        if (header == null)
+        if (header == null && loadmoreview == null)
             return dataLists.size();
+        else if (header != null && loadmoreview != null)
+            return dataLists.size() + 2;
         else
             return dataLists.size() + 1;
     }
@@ -96,7 +106,7 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
 
         public ViewHolder(View itemView) {
             super(itemView);
-            if (itemView != header) {
+            if (itemView != header && itemView != loadmoreview) {
                 ButterKnife.bind(this, itemView);
             }
         }
