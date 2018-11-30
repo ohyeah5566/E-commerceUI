@@ -1,0 +1,47 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_commodity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:padding="6dp"
+    app:cardBackgroundColor="#ffdddddd">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgv_itemcard_img"
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:src="@drawable/commodity_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_itemcard_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金牌干溜 1984酸辣粉 257g"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_itemcard_img" />
+
+        <TextView
+            android:id="@+id/tv_itemcard_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$120"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
+
+        <TextView
+            android:id="@+id/tv_itemcard_specPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$95"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,13 +1,20 @@
 package ohyeah5566.ui.ui;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ohyeah5566.ui.R;
 
 /**
@@ -15,13 +22,15 @@ import ohyeah5566.ui.R;
  */
 public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapater.ViewHolder> {
 
-    private List<String> dataLists;
+    private List<Product> dataLists;
+    private Context mContext;
     private View header;
     int TYPE_NORMAL = 0;
     int TYPE_HEADER = 1;
 
-    public RecycleviewAdapater(List<String> data) {
+    public RecycleviewAdapater(List<Product> data,Context mContext) {
         dataLists = data;
+        this.mContext = mContext;
     }
 
     public void setHeaderView(View headerView) {
@@ -38,20 +47,35 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
         if (position == 0) return TYPE_HEADER;
         return TYPE_NORMAL;
     }
+    //重写此方法，判断recyclerview的layoutmanager为StaggeredGridLayoutManager的时候，是header和footer独占一行，而不是一个item
+    @Override
+    public void onViewAttachedToWindow(ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+        if (layoutParams!=null&&layoutParams instanceof StaggeredGridLayoutManager.LayoutParams){
+            StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) layoutParams;
+            params.setFullSpan(getItemViewType(holder.getLayoutPosition())==TYPE_HEADER);
+        }
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (header != null && viewType == TYPE_HEADER) return new ViewHolder(header);
 
-        View view = View.inflate(parent.getContext(), R.layout.item_recycleview, null);
+        View view = View.inflate(parent.getContext(), R.layout.item_productcard, null);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (getItemViewType(position) == TYPE_NORMAL)
-            holder.mTextView.setText(dataLists.get(position - 1));
+        if (getItemViewType(position) == TYPE_NORMAL){
+            holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext,dataLists.get(position-1).getImageID()));
+            holder.tv_ItemcardTitle.setText(dataLists.get(position-1).getName());
+            holder.tv_ItemcardPrice.setText(dataLists.get(position-1).getOriginPrice());
+            holder.tv_ItemcardSpecPrice.setText(dataLists.get(position-1).getSpecPrice());
+        }
         else
             return;
     }
@@ -65,12 +89,16 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
+        @BindView(R.id.imgv_itemcard_img) ImageView imgv_ItemcardImg;
+        @BindView(R.id.tv_itemcard_title) TextView tv_ItemcardTitle;
+        @BindView(R.id.tv_itemcard_price) TextView tv_ItemcardPrice;
+        @BindView(R.id.tv_itemcard_specPrice) TextView tv_ItemcardSpecPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            if (itemView != header)
-                mTextView = (TextView) itemView.findViewById(R.id.recycle_textview);
+            if (itemView != header) {
+                ButterKnife.bind(this, itemView);
+            }
         }
     }
 

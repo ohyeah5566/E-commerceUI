@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 import ohyeah5566.ui.R;
 import ohyeah5566.ui.ui.HotsaleAdapter;
 import ohyeah5566.ui.ui.HotsaleItem;
+import ohyeah5566.ui.ui.Product;
 import ohyeah5566.ui.ui.RecycleviewAdapater;
 import ohyeah5566.ui.ui.homeImageloader;
 
@@ -33,7 +35,7 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.home_recycleview) RecyclerView mRecycleView;
 
-    private List<String> stringList= new ArrayList<>();
+    private List<Product> productList= new ArrayList<>();
     View header ;
     Banner banner;
 
@@ -42,23 +44,17 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, rootView);
 
-
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
-        stringList.add("4");
+        productList.add(new Product(R.drawable.commodity_1,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_2,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_3,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_4,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_5,"金牌干溜 1984酸辣粉 257g","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_6,"金牌干溜 1984酸辣粉 257g","$120","$95"));
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(stringList);
+        RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList,getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
+        mRecycleView.setLayoutManager(new
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         iniHeader();
         iniBanner();
