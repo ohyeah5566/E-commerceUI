@@ -4,10 +4,10 @@ package ohyeah5566.ui.ui;
  * Created by yiwei on 2018/11/28.
  */
 public class HotsaleItem {
-    int imageID;
-    String commodityName;
-    String price;
-    String priceOrigin;
+    private int imageID;
+    private String commodityName;
+    private String price;
+    private String priceOrigin;
 
     public HotsaleItem(int imageID, String commodityName, String price, String priceOrigin) {
         this.imageID = imageID;

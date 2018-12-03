@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,7 +41,7 @@ public class HotsaleAdapter extends RecyclerView.Adapter<HotsaleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imgv_CategoryCommodity.setImageDrawable(ContextCompat.getDrawable(mContext, mList.get(position).imageID));
+        Glide.with(mContext).load(ContextCompat.getDrawable(mContext,mList.get(position).getImageID())).into(holder.imgv_CategoryCommodity);
         holder.tv_CategoryCommodityName.setText(mList.get(position).getCommodityName());
         holder.tv_CategoryCommodityPrice.setText(mList.get(position).getPrice());
         holder.tv_CategoryCommodityPriceOrigin.setText(mList.get(position).getPriceOrigin());

@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -103,6 +105,10 @@ public class HomeFragment extends Fragment {
         mList.add(new HotsaleItem(R.drawable.hotitem_8, "電熱毯", "$" + 13000, "$" + 14500));
 
         header = LayoutInflater.from(getContext()).inflate(R.layout.header_home, mRecycleView, false);
+        ImageView imageView = header.findViewById(R.id.imgv_category);
+        Glide.with(getContext()).load(ContextCompat.getDrawable(getContext(),R.drawable.category))
+                .into(imageView);
+
         RecyclerView Rview = header.findViewById(R.id.header_recycleview);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         Rview.setLayoutManager(manager);

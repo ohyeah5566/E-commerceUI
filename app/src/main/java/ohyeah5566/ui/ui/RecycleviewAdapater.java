@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -83,7 +85,9 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_NORMAL) {
-            holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()));
+            Glide.with(mContext).load(ContextCompat.getDrawable(mContext,dataLists.get(position-1).getImageID()))
+                    .into(holder.imgv_ItemcardImg);
+          //  holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()));
             holder.tv_ItemcardTitle.setText(dataLists.get(position - 1).getName());
             holder.tv_ItemcardPrice.setText(dataLists.get(position - 1).getOriginPrice());
             holder.tv_ItemcardSpecPrice.setText(dataLists.get(position - 1).getSpecPrice());
