@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,6 +41,11 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecycleviewAdapate
     public void setFooterView(View footerView) {
         loadmoreview = footerView;
         notifyItemInserted(getItemCount() - 1);
+    }
+
+    public void addData(List<Product> data){
+        dataLists.addAll(data);
+        notifyItemInserted(getItemCount() - 1);  //最後的位置留給Footer
     }
 
     @Override

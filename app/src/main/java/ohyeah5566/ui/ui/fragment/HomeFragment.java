@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
+        final RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
         mRecycleView.setLayoutManager(new
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
                 if (!loading && !recyclerView.canScrollVertically(1)) {
                     Log.d(TAG, "到底惹");
                     loading = true; //loading new data
+                    recycleviewAdapater.addData(productList);
                 }
             }
 
