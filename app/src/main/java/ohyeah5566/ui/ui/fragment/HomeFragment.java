@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,37 +32,59 @@ import ohyeah5566.ui.ui.homeImageloader;
  * Created by yiwei on 2018/11/23.
  */
 public class HomeFragment extends Fragment {
-
+    String TAG = "HomeFragment";
 
     @BindView(R.id.home_recycleview) RecyclerView mRecycleView;
 
-    private List<Product> productList= new ArrayList<>();
-    View header ;
+    private List<Product> productList = new ArrayList<>();
+    View header;
     View footer;
     Banner banner;
+    boolean loading = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, rootView);
 
-        productList.add(new Product(R.drawable.commodity_1,"金牌干溜 1984酸辣粉 257g","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_2,"【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_3,"當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_4,"3C買賣 SONY PlayStation SCPH-7501 遊戲主機","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_5,"[貓貓蟲-咖波] 經典造型 絨毛娃娃","$120","$95"));
-        productList.add(new Product(R.drawable.commodity_6,"手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus","$120","$95"));
+        productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
+        productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
+        productList.add(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
+        productList.add(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
+        productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
+        productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList,getContext());
+        RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
         mRecycleView.setLayoutManager(new
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (!loading && !recyclerView.canScrollVertically(1)) {
+                    Log.d(TAG, "到底惹");
+                    loading = true; //loading new data
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                mRecycleView.getLayoutManager().getChildCount();
+            }
+        });
+
 
         iniHeader();
+
         addFooter();
+
         iniBanner();
         recycleviewAdapater.setHeaderView(header);
         recycleviewAdapater.setFooterView(footer);
+
+        Log.d("HomeFragment", "onCreateView");
 
         return rootView;
     }
@@ -69,25 +92,26 @@ public class HomeFragment extends Fragment {
 
     private void iniHeader() {
         List<HotsaleItem> mList = new ArrayList<>();
-        mList.add(new HotsaleItem(R.drawable.hotitem_1, "Adidas 帽子", "$"+280, "$"+300));
-        mList.add(new HotsaleItem(R.drawable.hotitem_2, "Adidas 鞋子", "$"+2300, "$"+3000));
-        mList.add(new HotsaleItem(R.drawable.hotitem_3, "發熱衣", "$"+120, "$"+140));
-        mList.add(new HotsaleItem(R.drawable.hotitem_4, "木製櫃", "$"+3300, "$"+4500));
-        mList.add(new HotsaleItem(R.drawable.hotitem_5, "充電線", "$"+80, "$"+150));
-        mList.add(new HotsaleItem(R.drawable.hotitem_6, "鍋子", "$"+800, "$"+980));
-        mList.add(new HotsaleItem(R.drawable.hotitem_7, "洗衣精", "$"+230, "$"+250));
-        mList.add(new HotsaleItem(R.drawable.hotitem_8, "電熱毯", "$"+13000, "$"+14500));
+        mList.add(new HotsaleItem(R.drawable.hotitem_1, "Adidas 帽子", "$" + 280, "$" + 300));
+        mList.add(new HotsaleItem(R.drawable.hotitem_2, "Adidas 鞋子", "$" + 2300, "$" + 3000));
+        mList.add(new HotsaleItem(R.drawable.hotitem_3, "發熱衣", "$" + 120, "$" + 140));
+        mList.add(new HotsaleItem(R.drawable.hotitem_4, "木製櫃", "$" + 3300, "$" + 4500));
+        mList.add(new HotsaleItem(R.drawable.hotitem_5, "充電線", "$" + 80, "$" + 150));
+        mList.add(new HotsaleItem(R.drawable.hotitem_6, "鍋子", "$" + 800, "$" + 980));
+        mList.add(new HotsaleItem(R.drawable.hotitem_7, "洗衣精", "$" + 230, "$" + 250));
+        mList.add(new HotsaleItem(R.drawable.hotitem_8, "電熱毯", "$" + 13000, "$" + 14500));
 
-        header = LayoutInflater.from(getContext()).inflate(R.layout.header_home,mRecycleView,false);
+        header = LayoutInflater.from(getContext()).inflate(R.layout.header_home, mRecycleView, false);
         RecyclerView Rview = header.findViewById(R.id.header_recycleview);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         Rview.setLayoutManager(manager);
-        Rview.setAdapter(new HotsaleAdapter(mList,getContext()));
+        Rview.setAdapter(new HotsaleAdapter(mList, getContext()));
         Rview.setNestedScrollingEnabled(false);
 
     }
-    private void addFooter(){
-        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer,mRecycleView,false);
+
+    private void addFooter() {
+        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer, mRecycleView, false);
     }
 
     private void iniBanner() {
