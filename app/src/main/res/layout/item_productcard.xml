@@ -2,12 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview_commodity"
     android:layout_width="500px"
-    android:layout_height="wrap_content"
-    app:cardBackgroundColor="#ffdddddd">
+    android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="#ffdddddd">
 
         <ImageView
             android:id="@+id/imgv_itemcard_img"
@@ -22,7 +22,8 @@
             android:id="@+id/tv_itemcard_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="金牌干溜 1984酸辣粉 257g"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintLeft_toLeftOf="@+id/imgv_itemcard_img"
             app:layout_constraintRight_toRightOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/imgv_itemcard_img" />
