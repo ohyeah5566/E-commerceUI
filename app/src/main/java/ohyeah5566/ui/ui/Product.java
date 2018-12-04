@@ -62,4 +62,9 @@ public class Product {
     public void setOriginPrice(String originPrice) {
         this.originPrice = originPrice;
     }
+
+    @Override
+    public String toString() {
+        return isTitle ? getTitle() : getName();
+    }
 }

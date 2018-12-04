@@ -48,7 +48,7 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void addData(List<Product> data) {
-        dataLists.addAll(data);
+        dataLists = data;
         notifyItemInserted(getItemCount() - 1);  //最後的位置留給Footer
     }
 
@@ -92,8 +92,9 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        int viewType = getItemViewType(position);
 
-        if (getItemViewType(position) == TYPE_NORMAL) {
+        if (viewType == TYPE_NORMAL) {
             ViewHolder viewHolder = (ViewHolder) holder;
             Glide.with(mContext).load(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()))
                     .into(viewHolder.imgv_ItemcardImg);
@@ -101,7 +102,7 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolder.tv_ItemcardTitle.setText(dataLists.get(position - 1).getName());
             viewHolder.tv_ItemcardPrice.setText(dataLists.get(position - 1).getOriginPrice());
             viewHolder.tv_ItemcardSpecPrice.setText(dataLists.get(position - 1).getSpecPrice());
-        } else if (getItemViewType(position) == TYPE_TITLE) {
+        } else if (viewType == TYPE_TITLE) {
             TitleHolder viewHolder = (TitleHolder) holder;
             viewHolder.tv_itemTitle.setText(dataLists.get(position - 1).getTitle());
         } else
