@@ -4,17 +4,31 @@ package ohyeah5566.ui.ui;
  * Created by yiwei on 2018/11/30.
  */
 public class Product {
-
+    private String Title;
+    private boolean isTitle = false;
     private int imageID;
     private String name;
     private String specPrice;
     private String originPrice;
+
+    public Product(String title) {
+        this.Title = title;
+        this.isTitle = true;
+    }
 
     public Product(int imageID, String name, String specPrice, String originPrice) {
         this.imageID = imageID;
         this.name = name;
         this.specPrice = specPrice;
         this.originPrice = originPrice;
+    }
+
+    public boolean isTitle() {
+        return isTitle;
+    }
+
+    public String getTitle() {
+        return Title;
     }
 
     public int getImageID() {

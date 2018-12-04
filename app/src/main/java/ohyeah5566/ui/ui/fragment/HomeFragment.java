@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.home_recycleview) RecyclerView mRecycleView;
 
+    RecycleviewAdapater recycleviewAdapater;
     private List<Product> productList = new ArrayList<>();
     View header;
     View footer;
@@ -49,6 +51,23 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, rootView);
 
+
+        iniRecyclerview();
+        iniHeader();
+        addFooter();
+        iniBanner();
+        recycleviewAdapater.setHeaderView(header);
+        recycleviewAdapater.setFooterView(footer);
+
+        Log.d("HomeFragment", "onCreateView");
+
+        return rootView;
+    }
+
+    private void iniRecyclerview() {
+
+        productList.clear();
+        productList.add(new Product("每日新發現"));
         productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
@@ -56,10 +75,8 @@ public class HomeFragment extends Fragment {
         productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        final RecycleviewAdapater recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
+        recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
-        mRecycleView.setLayoutManager(new
-                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -67,6 +84,14 @@ public class HomeFragment extends Fragment {
                 if (!loading && !recyclerView.canScrollVertically(1)) {
                     Log.d(TAG, "到底惹");
                     loading = true; //loading new data
+
+                    productList.clear();
+                    productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
+                    productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
+                    productList.add(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
+                    productList.add(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
+                    productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
+                    productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
                     recycleviewAdapater.addData(productList);
                 }
             }
@@ -78,18 +103,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        mRecycleView.setLayoutManager(staggeredGridLayoutManager);
 
-        iniHeader();
-
-        addFooter();
-
-        iniBanner();
-        recycleviewAdapater.setHeaderView(header);
-        recycleviewAdapater.setFooterView(footer);
-
-        Log.d("HomeFragment", "onCreateView");
-
-        return rootView;
     }
 
 
@@ -106,7 +124,7 @@ public class HomeFragment extends Fragment {
 
         header = LayoutInflater.from(getContext()).inflate(R.layout.header_home, mRecycleView, false);
         ImageView imageView = header.findViewById(R.id.imgv_category);
-        Glide.with(getContext()).load(ContextCompat.getDrawable(getContext(),R.drawable.category))
+        Glide.with(getContext()).load(ContextCompat.getDrawable(getContext(), R.drawable.category))
                 .into(imageView);
 
         RecyclerView Rview = header.findViewById(R.id.header_recycleview);

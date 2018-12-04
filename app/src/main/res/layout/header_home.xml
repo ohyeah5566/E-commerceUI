@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp">
 
     <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/home_banner"
@@ -18,37 +19,48 @@
         android:layout_height="500px"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_banner"/>
+        app:layout_constraintTop_toBottomOf="@+id/home_banner" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:text="限時特賣  07 53 42"
-        app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgv_category" />
-
-    <TextView
-        android:id="@+id/tv_seeAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:text="查看全部 >"
-        app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgv_category" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/header_recycleview"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#ffffff"
-        app:layout_constraintTop_toBottomOf="@+id/tv_seeAll">
+        app:layout_constraintTop_toBottomOf="@+id/imgv_category" >
 
-    </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="限時特賣  07 53 42"
+            app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_seeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:text="查看全部 >"
+            app:layout_constraintBottom_toTopOf="@+id/header_recycleview"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/header_recycleview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_seeAll">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
