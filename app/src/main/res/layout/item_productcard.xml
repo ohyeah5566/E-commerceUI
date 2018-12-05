@@ -24,6 +24,8 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:ellipsize="end"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/imgv_itemcard_img"
             app:layout_constraintRight_toRightOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/imgv_itemcard_img" />
@@ -33,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$120"
+            android:paddingLeft="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
 
@@ -41,6 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$95"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:textColor="@color/colorSpecPrice"
             app:layout_constraintRight_toRightOf="@+id/imgv_itemcard_img"
             app:layout_constraintTop_toBottomOf="@+id/tv_itemcard_title" />
     </android.support.constraint.ConstraintLayout>

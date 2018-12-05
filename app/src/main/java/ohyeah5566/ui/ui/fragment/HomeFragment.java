@@ -104,16 +104,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new
-                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
                 switch(recycleviewAdapater.getItemViewType(position)){
-                    case 0:
+                    case 0: //Item 1格
                         return 1;
-                    default:
+                    default:  //Titel, header, footer 佔兩格
                         return 2;
                 }
             }

@@ -1,6 +1,7 @@
 package ohyeah5566.ui.ui;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -129,6 +130,8 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
             if (itemView != header && itemView != loadmoreview) {
                 ButterKnife.bind(this, itemView);
+                tv_ItemcardPrice.setPaintFlags(
+                        tv_ItemcardPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             }
         }
     }
