@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        iniBtnColor();
         fragmentManager = getSupportFragmentManager();
     }
 
@@ -59,59 +63,74 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         iniBtnColor();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        hideFragment(fragmentTransaction);
         switch (view.getId()) {
             case R.id.parent_home:
-                Log.d(TAG, "press Home");
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
+                    fragmentTransaction.add(R.id.frame_main, homeFragment);
                 }
-                fragmentTransaction.replace(R.id.frame_main, homeFragment);
+                fragmentTransaction.show(homeFragment);
 
-                imgv_Home.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_home_press));
+                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_home_press)).into(imgv_Home);
                 tv_Home.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_news:
-                Log.d(TAG, "press news");
                 if (newsFragment == null) {
                     newsFragment = new NewsFragment();
+                    fragmentTransaction.add(R.id.frame_main, newsFragment);
                 }
-                fragmentTransaction.replace(R.id.frame_main, newsFragment);
+                fragmentTransaction.show(newsFragment);
 
-                imgv_News.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_news_press));
+                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_news_press)).into(imgv_News);
                 tv_News.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_shopping:
-                Log.d(TAG, "press shopping");
                 if (shoppingFragment == null) {
                     shoppingFragment = new ShopFragment();
+                    fragmentTransaction.add(R.id.frame_main, shoppingFragment);
                 }
-                fragmentTransaction.replace(R.id.frame_main, shoppingFragment);
+                fragmentTransaction.show(shoppingFragment);
 
-                imgv_Shopping.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_shopping_press));
+                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_shopping_press))
+                        .into(imgv_Shopping);
                 tv_Shopping.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_notification:
-                Log.d(TAG, "press notification");
                 if (notifyFragment == null) {
                     notifyFragment = new NotifyFragment();
+                    fragmentTransaction.add(R.id.frame_main, notifyFragment);
                 }
-                fragmentTransaction.replace(R.id.frame_main, notifyFragment);
+                fragmentTransaction.show(notifyFragment);
 
-                imgv_Notification.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_notify_press));
+                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_notify_press)).into(imgv_Notification);
                 tv_Notification.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_member:
-                Log.d(TAG, "press member");
                 if (memberFragment == null) {
                     memberFragment = new MemberFragment();
+                    fragmentTransaction.add(R.id.frame_main, memberFragment);
                 }
-                fragmentTransaction.replace(R.id.frame_main, memberFragment);
+                fragmentTransaction.show(memberFragment);
 
-                imgv_Member.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_member_press));
+                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_member_press)).into(imgv_Member);
                 tv_Member.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
         }
         fragmentTransaction.commit();
+    }
+
+    private void hideFragment(FragmentTransaction fragmentTransaction) {
+        if (homeFragment != null)
+            fragmentTransaction.hide(homeFragment);
+        if (newsFragment != null)
+            fragmentTransaction.hide(newsFragment);
+        if (shoppingFragment != null)
+            fragmentTransaction.hide(shoppingFragment);
+        if (notifyFragment != null)
+            fragmentTransaction.hide(notifyFragment);
+        if (memberFragment != null)
+            fragmentTransaction.hide(memberFragment);
     }
 
     private void iniBtnColor() {

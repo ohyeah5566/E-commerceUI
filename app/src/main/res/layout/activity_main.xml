@@ -37,8 +37,7 @@
                 android:layout_width="@dimen/bottom_icon_width"
                 android:layout_height="@dimen/bottom_icon_height"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_home" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_home"
@@ -62,8 +61,7 @@
                 android:layout_width="@dimen/bottom_icon_width"
                 android:layout_height="@dimen/bottom_icon_height"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_news" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_news"
@@ -87,8 +85,7 @@
                 android:layout_width="@dimen/bottom_icon_width"
                 android:layout_height="@dimen/bottom_icon_height"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_shopping" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_shopping"
@@ -112,8 +109,7 @@
                 android:layout_width="@dimen/bottom_icon_width"
                 android:layout_height="@dimen/bottom_icon_height"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_notify" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_notification"
@@ -137,8 +133,7 @@
                 android:layout_width="@dimen/bottom_icon_width"
                 android:layout_height="@dimen/bottom_icon_height"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_member" />
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/tv_member"
