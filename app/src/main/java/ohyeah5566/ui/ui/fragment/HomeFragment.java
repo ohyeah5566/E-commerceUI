@@ -9,7 +9,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +26,7 @@ import butterknife.ButterKnife;
 import ohyeah5566.ui.R;
 import ohyeah5566.ui.ui.HotsaleAdapter;
 import ohyeah5566.ui.ui.HotsaleItem;
+import ohyeah5566.ui.ui.ItemTitleDecoration;
 import ohyeah5566.ui.ui.MyPaddingDecoration;
 import ohyeah5566.ui.ui.Product;
 import ohyeah5566.ui.ui.RecycleviewAdapater;
@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment {
         recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
         mRecycleView.addItemDecoration(new MyPaddingDecoration());
+        mRecycleView.addItemDecoration(new ItemTitleDecoration(getContext(),productList));
         mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
