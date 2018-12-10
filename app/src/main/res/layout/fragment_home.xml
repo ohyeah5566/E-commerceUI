@@ -12,7 +12,7 @@
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/Widget.AppCompat.Toolbar"
-        android:background="#ffffff">
+        android:background="#fa9016">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

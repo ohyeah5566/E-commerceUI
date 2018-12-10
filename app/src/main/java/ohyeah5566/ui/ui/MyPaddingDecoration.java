@@ -26,7 +26,6 @@ public class MyPaddingDecoration extends RecyclerView.ItemDecoration {
             outRect.bottom = divider;
         } else {
             outRect.bottom = divider;
-            outRect.top = divider;
         }
     }
 
