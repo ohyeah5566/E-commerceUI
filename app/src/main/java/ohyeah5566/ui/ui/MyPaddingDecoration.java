@@ -18,9 +18,16 @@ public class MyPaddingDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.left = divider;
-        outRect.top = divider;
-        outRect.right = divider;
-        outRect.bottom = divider;
+        int position = parent.getChildAdapterPosition(view);
+        if (parent.getAdapter().getItemViewType(position)==0) {
+            outRect.left = divider;
+            outRect.top = divider;
+            outRect.right = divider;
+            outRect.bottom = divider;
+        } else {
+            outRect.bottom = divider;
+            outRect.top = divider;
+        }
     }
+
 }

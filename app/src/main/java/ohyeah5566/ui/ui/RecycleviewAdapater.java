@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -63,20 +64,6 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
 
         return dataLists.get(position - 1).isTitle() ? TYPE_TITLE : TYPE_NORMAL;
     }
-
-    //重写此方法，判断recyclerview的layoutmanager为StaggeredGridLayoutManager的时候，是header和footer独占一行，而不是一个item
-    @Override
-    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
-        if (layoutParams != null && layoutParams instanceof StaggeredGridLayoutManager.LayoutParams) {
-            StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) layoutParams;
-            params.setFullSpan(getItemViewType(holder.getLayoutPosition()) == TYPE_HEADER
-                    || getItemViewType(holder.getLayoutPosition()) == TYPE_FOOTER
-                    || getItemViewType(holder.getLayoutPosition()) == TYPE_TITLE);
-        }
-    }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

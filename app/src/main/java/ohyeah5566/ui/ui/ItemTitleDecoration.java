@@ -51,6 +51,7 @@ public class ItemTitleDecoration extends RecyclerView.ItemDecoration {
 
     private void drawHeader(RecyclerView parent, Canvas c) {
 
+        if (topTitleView==null) return ;
         RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) topTitleView.getLayoutParams();
         if (lp == null) {
             lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);//这里是根据复杂布局layout的width height，new一个Lp

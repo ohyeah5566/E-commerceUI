@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
         productList.add(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
-        mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
         mRecycleView.addItemDecoration(new MyPaddingDecoration());

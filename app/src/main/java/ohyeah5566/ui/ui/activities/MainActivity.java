@@ -1,6 +1,7 @@
 package ohyeah5566.ui.ui.activities;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.parent_home) LinearLayout parentHome;
     @BindView(R.id.parent_news) LinearLayout parentNews;
     @BindView(R.id.parent_shopping) LinearLayout parentShopping;
-    @BindView(R.id.parent_notification) LinearLayout parentNotification;
+    @BindView(R.id.parent_notification) ConstraintLayout parentNotification;
     @BindView(R.id.parent_member) LinearLayout parentMember;
     @BindView(R.id.imgv_home) ImageView imgv_Home;
     @BindView(R.id.imgv_news) ImageView imgv_News;
