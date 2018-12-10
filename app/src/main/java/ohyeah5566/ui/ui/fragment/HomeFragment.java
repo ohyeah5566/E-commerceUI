@@ -83,9 +83,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (!loading && !recyclerView.canScrollVertically(1)) {
+                if (!loading && !recyclerView.canScrollVertically(1)) { //canScrollVertically能否往下滑動
                     Log.d(TAG, "到底惹");
-                    loading = true; //loading new data
+                    loading = true;
 
                     productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
                     productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
@@ -94,6 +94,7 @@ public class HomeFragment extends Fragment {
                     productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
                     productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
                     recycleviewAdapater.addData(productList);
+                    loading = false;
                 }
             }
 
