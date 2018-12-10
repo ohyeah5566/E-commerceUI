@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
         recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
         mRecycleView.setAdapter(recycleviewAdapater);
         mRecycleView.addItemDecoration(new MyPaddingDecoration());
-        mRecycleView.addItemDecoration(new ItemTitleDecoration(getContext(),productList));
+        mRecycleView.addItemDecoration(new ItemTitleDecoration(getContext(), productList));
         mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -87,6 +87,11 @@ public class HomeFragment extends Fragment {
                     Log.d(TAG, "到底惹");
                     loading = true;
 
+                    try {
+                        Thread.sleep(500);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
                     productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
                     productList.add(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
@@ -105,11 +110,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                switch(recycleviewAdapater.getItemViewType(position)){
+                switch (recycleviewAdapater.getItemViewType(position)) {
                     case 0: //Item 1格
                         return 1;
                     default:  //Titel, header, footer 佔兩格
