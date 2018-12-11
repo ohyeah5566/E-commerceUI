@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="404px"
+    android:layout_width="@dimen/qb_px_404"
     android:layout_height="wrap_content"
-    android:padding="6dp">
+    android:padding="@dimen/qb_px_16">
 
 
     <ImageView
         android:id="@+id/imgv_category_commodity"
-        android:layout_width="260px"
-        android:layout_height="260px"
+        android:layout_width="@dimen/qb_px_260"
+        android:layout_height="@dimen/qb_px_260"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

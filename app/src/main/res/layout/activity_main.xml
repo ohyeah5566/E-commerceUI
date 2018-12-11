@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/imgv_home"
-                android:layout_width="@dimen/bottom_icon_width"
-                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_width="@dimen/qb_px_92"
+                android:layout_height="@dimen/qb_px_108"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
 
@@ -58,8 +58,8 @@
 
             <ImageView
                 android:id="@+id/imgv_news"
-                android:layout_width="@dimen/bottom_icon_width"
-                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_width="@dimen/qb_px_92"
+                android:layout_height="@dimen/qb_px_108"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
 
@@ -82,8 +82,8 @@
 
             <ImageView
                 android:id="@+id/imgv_shopping"
-                android:layout_width="@dimen/bottom_icon_width"
-                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_width="@dimen/qb_px_92"
+                android:layout_height="@dimen/qb_px_108"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
 
@@ -112,8 +112,8 @@
 
             <ImageView
                 android:id="@+id/imgv_notification"
-                android:layout_width="@dimen/bottom_icon_width"
-                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_width="@dimen/qb_px_92"
+                android:layout_height="@dimen/qb_px_108"
                 android:layout_gravity="center"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -152,8 +152,8 @@
 
             <ImageView
                 android:id="@+id/imgv_member"
-                android:layout_width="@dimen/bottom_icon_width"
-                android:layout_height="@dimen/bottom_icon_height"
+                android:layout_width="@dimen/qb_px_92"
+                android:layout_height="@dimen/qb_px_108"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
 
