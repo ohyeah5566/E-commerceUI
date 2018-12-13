@@ -3,10 +3,7 @@ package ohyeah5566.ui.ui;
 import android.content.Context;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -84,10 +81,8 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
 
         if (viewType == TYPE_NORMAL) {
             ViewHolder viewHolder = (ViewHolder) holder;
-            Glide.with(mContext).load(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()))
-                    .into(viewHolder.imgv_ItemcardImg);
-            //  holder.imgv_ItemcardImg.setImageDrawable(ContextCompat.getDrawable(mContext, dataLists.get(position - 1).getImageID()));
-            viewHolder.tv_ItemcardTitle.setText(dataLists.get(position - 1).getName());
+            Glide.with(mContext).load(dataLists.get(position - 1).getImageID()).into(viewHolder.imgv_ItemcardImg);
+              viewHolder.tv_ItemcardTitle.setText(dataLists.get(position - 1).getName());
             viewHolder.tv_ItemcardPrice.setText(dataLists.get(position - 1).getOriginPrice());
             viewHolder.tv_ItemcardSpecPrice.setText(dataLists.get(position - 1).getSpecPrice());
         } else if (viewType == TYPE_TITLE) {

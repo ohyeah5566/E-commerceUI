@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentTransaction.show(homeFragment);
 
-                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_home_press)).into(imgv_Home);
+                Glide.with(this).load(R.drawable.ic_home_press).into(imgv_Home);
                 tv_Home.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_news:
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentTransaction.show(newsFragment);
 
-                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_news_press)).into(imgv_News);
+                Glide.with(this).load( R.drawable.ic_news_press).into(imgv_News);
                 tv_News.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_shopping:
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentTransaction.show(shoppingFragment);
 
-                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_shopping_press))
+                Glide.with(this).load( R.drawable.ic_shopping_press)
                         .into(imgv_Shopping);
                 tv_Shopping.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentTransaction.show(notifyFragment);
 
-                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_notify_press)).into(imgv_Notification);
+                Glide.with(this).load(R.drawable.ic_notify_press).into(imgv_Notification);
                 tv_Notification.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_member:
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentTransaction.show(memberFragment);
 
-                Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.ic_member_press)).into(imgv_Member);
+                Glide.with(this).load( R.drawable.ic_member_press).into(imgv_Member);
                 tv_Member.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
         }

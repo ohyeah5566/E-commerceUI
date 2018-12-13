@@ -1,11 +1,9 @@
 package ohyeah5566.ui.ui.fragment;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -140,8 +138,7 @@ public class HomeFragment extends Fragment {
 
         header = LayoutInflater.from(getContext()).inflate(R.layout.header_home, mRecycleView, false);
         ImageView imageView = header.findViewById(R.id.imgv_category);
-        Glide.with(getContext()).load(ContextCompat.getDrawable(getContext(), R.drawable.category))
-                .into(imageView);
+        Glide.with(getContext()).load(R.drawable.category).into(imageView);
 
         RecyclerView Rview = header.findViewById(R.id.header_recycleview);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -153,15 +150,16 @@ public class HomeFragment extends Fragment {
 
     private void addFooter() {
         footer = LayoutInflater.from(getContext()).inflate(R.layout.footer, mRecycleView, false);
+
     }
 
     private void iniBanner() {
         banner = header.findViewById(R.id.home_banner);
-        List<Drawable> list_image = new ArrayList<>();
-        list_image.add(ContextCompat.getDrawable(getContext(), R.drawable.banner_1));
-        list_image.add(ContextCompat.getDrawable(getContext(), R.drawable.banner_2));
-        list_image.add(ContextCompat.getDrawable(getContext(), R.drawable.banner_3));
-        list_image.add(ContextCompat.getDrawable(getContext(), R.drawable.banner_4));
+        List<Integer> list_image = new ArrayList<>();
+        list_image.add(R.drawable.banner_1);
+        list_image.add(R.drawable.banner_2);
+        list_image.add(R.drawable.banner_3);
+        list_image.add(R.drawable.banner_4);
 
         banner.setImageLoader(new homeImageloader());
         //设置图片集合

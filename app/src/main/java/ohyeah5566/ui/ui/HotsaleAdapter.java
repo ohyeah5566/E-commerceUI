@@ -3,7 +3,6 @@ package ohyeah5566.ui.ui;
 import android.content.Context;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +40,7 @@ public class HotsaleAdapter extends RecyclerView.Adapter<HotsaleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(mContext).load(ContextCompat.getDrawable(mContext,mList.get(position).getImageID())).into(holder.imgv_CategoryCommodity);
+        Glide.with(mContext).load(mList.get(position).getImageID()).into(holder.imgv_CategoryCommodity);
         holder.tv_CategoryCommodityName.setText(mList.get(position).getCommodityName());
         holder.tv_CategoryCommodityPrice.setText(mList.get(position).getPrice());
         holder.tv_CategoryCommodityPriceOrigin.setText(mList.get(position).getPriceOrigin());
