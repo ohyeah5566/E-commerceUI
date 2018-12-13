@@ -6,4 +6,8 @@
     <color name="colorTextDefault">#808080</color>
     <color name="colorHomeTextPress">#f2473d</color>
     <color name="colorSpecPrice">#f2473d</color>
+
+    <color name="colorToolbar">#f2473d</color>
+    <color name="colorToolbarEdittext">#df4138</color>
+    <color name="colorToolbarText">#ffffff</color>
 </resources>

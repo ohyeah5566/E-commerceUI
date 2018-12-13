@@ -12,7 +12,7 @@
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/Widget.AppCompat.Toolbar"
-        android:background="#fa9016">
+        android:background="@color/colorToolbar">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,10 +24,10 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/qb_px_68"
                 android:layout_margin="@dimen/qb_px_21"
-                android:background="#a9a9a9"
+                android:background="@color/colorToolbarEdittext"
                 android:drawableLeft="@drawable/ic_search"
                 android:hint="XX 購物"
-                android:textColorHint="@color/colorSpecPrice"
+                android:textColorHint="@color/colorToolbarText"
                 android:paddingLeft="@dimen/qb_px_21"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
