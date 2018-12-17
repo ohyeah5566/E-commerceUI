@@ -46,8 +46,8 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyItemInserted(getItemCount() - 1);
     }
 
-    public void addData(List<Product> data) {
-        dataLists = data;
+    public void addData(Product product) {
+        dataLists.add(product);
         notifyItemInserted(getItemCount() - 1);  //最後的位置留給Footer
     }
 

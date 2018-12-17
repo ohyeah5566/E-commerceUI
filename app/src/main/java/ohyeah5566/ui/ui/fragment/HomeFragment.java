@@ -84,20 +84,7 @@ public class HomeFragment extends Fragment {
                 if (!loading && !recyclerView.canScrollVertically(1)) { //canScrollVertically能否往下滑動
                     Log.d(TAG, "到底惹");
                     loading = true;
-
-                    try {
-                        Thread.sleep(500);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                    productList.add(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
-                    productList.add(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
-                    productList.add(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
-                    productList.add(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
-                    productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
-                    productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
-                    recycleviewAdapater.addData(productList);
-                    loading = false;
+                    loadNewData();
                 }
             }
 
@@ -122,6 +109,33 @@ public class HomeFragment extends Fragment {
         });
         mRecycleView.setLayoutManager(gridLayoutManager);
 
+    }
+
+    private void loadNewData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    Thread.sleep(500);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
+                        recycleviewAdapater.addData(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
+
+                        loading = false;
+                    }
+                });
+            }
+        }).start();
     }
 
 
