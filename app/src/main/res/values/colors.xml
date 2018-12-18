@@ -10,4 +10,6 @@
     <color name="colorToolbar">#f2473d</color>
     <color name="colorToolbarEdittext">#df4138</color>
     <color name="colorToolbarText">#ffffff</color>
+
+    <color name="mineBtnSeleced">#EE7700</color>
 </resources>
