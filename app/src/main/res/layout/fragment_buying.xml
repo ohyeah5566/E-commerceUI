@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <include
         android:id="@+id/include_buylist"
-        layout="@layout/mine_recycler_item"
+        layout="@layout/item_minerecyclerview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/qb_px_50"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mine_selling" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraint_toPay"
