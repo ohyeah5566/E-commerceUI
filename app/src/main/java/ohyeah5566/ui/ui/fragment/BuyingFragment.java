@@ -17,6 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ohyeah5566.ui.R;
+import ohyeah5566.ui.ui.DividerDecoration;
 import ohyeah5566.ui.ui.MemberRecyclerViewAdapter;
 import ohyeah5566.ui.ui.MemberRecyclerViewItem;
 
@@ -24,8 +25,6 @@ import ohyeah5566.ui.ui.MemberRecyclerViewItem;
  * Created by yiwei on 2018/12/18.
  */
 public class BuyingFragment extends Fragment {
-
-    String TAG = "BuyingFragment";
     @BindView(R.id.recyclerview_item) RecyclerView recyclerviewItem;
     List<MemberRecyclerViewItem> list = new ArrayList<>();
     MemberRecyclerViewAdapter memberRecyclerViewAdapter;
@@ -33,7 +32,6 @@ public class BuyingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_buying, container, false);
-        Log.d(TAG,"onCreateView");
         ButterKnife.bind(this, rootView);
         iniRecyclerView();
         return rootView;
@@ -53,6 +51,7 @@ public class BuyingFragment extends Fragment {
         memberRecyclerViewAdapter = new MemberRecyclerViewAdapter(list,getContext());
         recyclerviewItem.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerviewItem.setAdapter(memberRecyclerViewAdapter);
+        recyclerviewItem.addItemDecoration(new DividerDecoration(getContext()));
     }
 
 }

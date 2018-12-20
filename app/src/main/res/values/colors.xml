@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="profile_text">#ffffff</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -12,4 +14,5 @@
     <color name="colorToolbarText">#ffffff</color>
 
     <color name="mineBtnSeleced">#EE7700</color>
+    <color name="divider">#F7F7F7</color>
 </resources>
