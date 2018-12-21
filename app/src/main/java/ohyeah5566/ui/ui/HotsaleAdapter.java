@@ -22,10 +22,10 @@ import ohyeah5566.ui.R;
  */
 public class HotsaleAdapter extends RecyclerView.Adapter<HotsaleAdapter.ViewHolder> {
 
-    private List<HotsaleItem> mList;
+    private List<HotsaleProduct> mList;
     private Context mContext;
 
-    public HotsaleAdapter(List<HotsaleItem> list, Context context) {
+    public HotsaleAdapter(List<HotsaleProduct> list, Context context) {
         mList = list;
         mContext = context;
     }

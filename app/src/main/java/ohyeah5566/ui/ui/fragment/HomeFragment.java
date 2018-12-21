@@ -23,12 +23,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ohyeah5566.ui.R;
 import ohyeah5566.ui.ui.HotsaleAdapter;
-import ohyeah5566.ui.ui.HotsaleItem;
+import ohyeah5566.ui.ui.HotsaleProduct;
 import ohyeah5566.ui.ui.ItemTitleDecoration;
-import ohyeah5566.ui.ui.MyPaddingDecoration;
+import ohyeah5566.ui.ui.HomePaddingDecoration;
 import ohyeah5566.ui.ui.Product;
-import ohyeah5566.ui.ui.RecycleviewAdapater;
-import ohyeah5566.ui.ui.homeImageloader;
+import ohyeah5566.ui.ui.HomeRecycleviewAdapater;
+import ohyeah5566.ui.ui.HomeImageloader;
 
 /**
  * Created by yiwei on 2018/11/23.
@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.home_recycleview) RecyclerView mRecycleView;
 
-    RecycleviewAdapater recycleviewAdapater;
+    HomeRecycleviewAdapater homeRecycleviewAdapater;
     private List<Product> productList = new ArrayList<>();
     View header;
     View footer;
@@ -55,8 +55,8 @@ public class HomeFragment extends Fragment {
         iniHeader();
         addFooter();
         iniBanner();
-        recycleviewAdapater.setHeaderView(header);
-        recycleviewAdapater.setFooterView(footer);
+        homeRecycleviewAdapater.setHeaderView(header);
+        homeRecycleviewAdapater.setFooterView(footer);
 
         Log.d("HomeFragment", "onCreateView");
 
@@ -73,9 +73,9 @@ public class HomeFragment extends Fragment {
         productList.add(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
         productList.add(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
-        recycleviewAdapater = new RecycleviewAdapater(productList, getContext());
-        mRecycleView.setAdapter(recycleviewAdapater);
-        mRecycleView.addItemDecoration(new MyPaddingDecoration());
+        homeRecycleviewAdapater = new HomeRecycleviewAdapater(productList, getContext());
+        mRecycleView.setAdapter(homeRecycleviewAdapater);
+        mRecycleView.addItemDecoration(new HomePaddingDecoration());
         mRecycleView.addItemDecoration(new ItemTitleDecoration(getContext(), productList));
         mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -99,10 +99,10 @@ public class HomeFragment extends Fragment {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                switch (recycleviewAdapater.getItemViewType(position)) {
+                switch (homeRecycleviewAdapater.getItemViewType(position)) {
                     case 0: //Item 1格
                         return 1;
-                    default:  //Titel, header, footer 佔兩格
+                    default:  //Titel, header, footer_home 佔兩格
                         return 2;
                 }
             }
@@ -124,12 +124,12 @@ public class HomeFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
-                        recycleviewAdapater.addData(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_1, "金牌干溜 1984酸辣粉 257g", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_2, "【Alice書店】修煉（全套4冊）／青少年奇幻小說／陳郁如／全新／小兵出版", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_3, "當天出貨 [ 附發票 ] 新小米行動電源2 10000mAh 雙向USB接口 雙向快充 行動電源", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_4, "3C買賣 SONY PlayStation SCPH-7501 遊戲主機", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_5, "[貓貓蟲-咖波] 經典造型 絨毛娃娃", "$120", "$95"));
+                        homeRecycleviewAdapater.addData(new Product(R.drawable.commodity_6, "手機電視棒-支援IOS12 電視棒 M5 手機電視同屏顯示 手機連電視 HDMI AnycastPlus", "$120", "$95"));
 
                         loading = false;
                     }
@@ -140,15 +140,15 @@ public class HomeFragment extends Fragment {
 
 
     private void iniHeader() {
-        List<HotsaleItem> mList = new ArrayList<>();
-        mList.add(new HotsaleItem(R.drawable.hotitem_1, "Adidas 帽子", "$" + 280, "$" + 300));
-        mList.add(new HotsaleItem(R.drawable.hotitem_2, "Adidas 鞋子", "$" + 2300, "$" + 3000));
-        mList.add(new HotsaleItem(R.drawable.hotitem_3, "發熱衣", "$" + 120, "$" + 140));
-        mList.add(new HotsaleItem(R.drawable.hotitem_4, "木製櫃", "$" + 3300, "$" + 4500));
-        mList.add(new HotsaleItem(R.drawable.hotitem_5, "充電線", "$" + 80, "$" + 150));
-        mList.add(new HotsaleItem(R.drawable.hotitem_6, "鍋子", "$" + 800, "$" + 980));
-        mList.add(new HotsaleItem(R.drawable.hotitem_7, "洗衣精", "$" + 230, "$" + 250));
-        mList.add(new HotsaleItem(R.drawable.hotitem_8, "電熱毯", "$" + 13000, "$" + 14500));
+        List<HotsaleProduct> mList = new ArrayList<>();
+        mList.add(new HotsaleProduct(R.drawable.hotitem_1, "Adidas 帽子", "$" + 280, "$" + 300));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_2, "Adidas 鞋子", "$" + 2300, "$" + 3000));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_3, "發熱衣", "$" + 120, "$" + 140));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_4, "木製櫃", "$" + 3300, "$" + 4500));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_5, "充電線", "$" + 80, "$" + 150));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_6, "鍋子", "$" + 800, "$" + 980));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_7, "洗衣精", "$" + 230, "$" + 250));
+        mList.add(new HotsaleProduct(R.drawable.hotitem_8, "電熱毯", "$" + 13000, "$" + 14500));
 
         header = LayoutInflater.from(getContext()).inflate(R.layout.header_home, mRecycleView, false);
         ImageView imageView = header.findViewById(R.id.imgv_category);
@@ -163,8 +163,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void addFooter() {
-        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer, mRecycleView, false);
-
+        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer_home, mRecycleView, false);
     }
 
     private void iniBanner() {
@@ -175,7 +174,7 @@ public class HomeFragment extends Fragment {
         list_image.add(R.drawable.banner_3);
         list_image.add(R.drawable.banner_4);
 
-        banner.setImageLoader(new homeImageloader());
+        banner.setImageLoader(new HomeImageloader());
         //设置图片集合
         banner.setImages(list_image);
         //banner设置方法全部调用完毕时最后调用

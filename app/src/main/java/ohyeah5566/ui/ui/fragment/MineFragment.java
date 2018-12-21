@@ -24,7 +24,7 @@ import ohyeah5566.ui.R;
 /**
  * Created by yiwei on 2018/11/23.
  */
-public class MemberFragment extends Fragment {
+public class MineFragment extends Fragment {
     @BindView(R.id.imgv_profilebackground) ImageView imgv_Profilebackground;
     @BindView(R.id.btn_mine_buying) Button btnMineBuying;
     @BindView(R.id.btn_mine_selling) Button btnMineSelling;

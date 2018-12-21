@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/include_buylist"
-        layout="@layout/item_minerecyclerview"
+        layout="@layout/item_mineaction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/qb_px_50"

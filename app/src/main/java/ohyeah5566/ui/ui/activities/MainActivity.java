@@ -6,21 +6,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ohyeah5566.ui.R;
 import ohyeah5566.ui.ui.fragment.HomeFragment;
-import ohyeah5566.ui.ui.fragment.MemberFragment;
+import ohyeah5566.ui.ui.fragment.MineFragment;
 import ohyeah5566.ui.ui.fragment.NewsFragment;
 import ohyeah5566.ui.ui.fragment.NotifyFragment;
 import ohyeah5566.ui.ui.fragment.ShopFragment;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private NewsFragment newsFragment;
     private ShopFragment shoppingFragment;
     private NotifyFragment notifyFragment;
-    private MemberFragment memberFragment;
+    private MineFragment mineFragment;
 
     private FragmentManager fragmentManager;
 
@@ -108,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 tv_Notification.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
                 break;
             case R.id.parent_member:
-                if (memberFragment == null) {
-                    memberFragment = new MemberFragment();
-                    fragmentTransaction.add(R.id.frame_main, memberFragment);
+                if (mineFragment == null) {
+                    mineFragment = new MineFragment();
+                    fragmentTransaction.add(R.id.frame_main, mineFragment);
                 }
-                fragmentTransaction.show(memberFragment);
+                fragmentTransaction.show(mineFragment);
 
                 Glide.with(this).load( R.drawable.ic_member_press).into(imgv_Member);
                 tv_Member.setTextColor(ContextCompat.getColor(this, R.color.colorHomeTextPress));
@@ -130,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.hide(shoppingFragment);
         if (notifyFragment != null)
             fragmentTransaction.hide(notifyFragment);
-        if (memberFragment != null)
-            fragmentTransaction.hide(memberFragment);
+        if (mineFragment != null)
+            fragmentTransaction.hide(mineFragment);
     }
 
     private void iniBtnColor() {

@@ -3,13 +3,13 @@ package ohyeah5566.ui.ui;
 /**
  * Created by yiwei on 2018/11/28.
  */
-public class HotsaleItem {
+public class HotsaleProduct {
     private int imageID;
     private String commodityName;
     private String price;
     private String priceOrigin;
 
-    public HotsaleItem(int imageID, String commodityName, String price, String priceOrigin) {
+    public HotsaleProduct(int imageID, String commodityName, String price, String priceOrigin) {
         this.imageID = imageID;
         this.commodityName = commodityName;
         this.price = price;

@@ -20,7 +20,7 @@ import ohyeah5566.ui.R;
 /**
  * Created by yiwei on 2018/11/28.
  */
-public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeRecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Product> dataLists;
     private Context mContext;
@@ -31,7 +31,7 @@ public class RecycleviewAdapater extends RecyclerView.Adapter<RecyclerView.ViewH
     int TYPE_FOOTER = 2;
     int TYPE_TITLE = 3;
 
-    public RecycleviewAdapater(List<Product> data, Context mContext) {
+    public HomeRecycleviewAdapater(List<Product> data, Context mContext) {
         dataLists = data;
         this.mContext = mContext;
     }

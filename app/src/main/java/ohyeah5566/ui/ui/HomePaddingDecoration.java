@@ -8,10 +8,10 @@ import android.view.View;
 /**
  * Created by yiwei on 2018/12/4.
  */
-public class MyPaddingDecoration extends RecyclerView.ItemDecoration {
+public class HomePaddingDecoration extends RecyclerView.ItemDecoration {
     private int divider;
 
-    public MyPaddingDecoration() {
+    public HomePaddingDecoration() {
         divider = 10;
     }
 

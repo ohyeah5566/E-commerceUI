@@ -31,7 +31,7 @@ public class MemberRecyclerViewAdapter extends RecyclerView.Adapter<MemberRecycl
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_minerecyclerview, null);
+        View view = View.inflate(parent.getContext(), R.layout.item_mineaction, null);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
         ViewHolder holder = new ViewHolder(view);

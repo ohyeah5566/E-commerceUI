@@ -9,7 +9,7 @@ import com.youth.banner.loader.ImageLoader;
 /**
  * Created by yiwei on 2018/11/26.
  */
-public class homeImageloader extends ImageLoader {
+public class HomeImageloader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
         Glide.with(context).load(path).into(imageView);
