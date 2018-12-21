@@ -28,9 +28,11 @@ public class BuyingFragment extends Fragment {
     @BindView(R.id.recyclerview_item) RecyclerView recyclerviewItem;
     List<MemberRecyclerViewItem> list = new ArrayList<>();
     MemberRecyclerViewAdapter memberRecyclerViewAdapter;
+    String TAG = "BuyingFragment";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_buying, container, false);
         ButterKnife.bind(this, rootView);
         iniRecyclerView();
